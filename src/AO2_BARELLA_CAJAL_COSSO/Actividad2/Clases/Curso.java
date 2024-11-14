@@ -1,10 +1,18 @@
 package AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases;
 
+import javax.swing.JOptionPane;
+
+import AO2_BARELLA_CAJAL_COSSO.Actividad2.Tipo_Cursos;
+import AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases.Ingreso;
+import AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases.Salida;
+
 public class Curso {
-    String nombreCurso;
-    int duracion;
-    Double matriculaAlumnos;
-    Double costoPorEstudiante;
+    protected String nombreCurso;
+    protected int duracion;
+    protected Double matriculaAlumnos;
+    protected Double costoPorEstudiante;
+    protected Tipo_Cursos tipoCurso;
+    protected Object[] cursosCreados;
     
     /*
      * GETTERS & SETTERS
@@ -59,5 +67,31 @@ public class Curso {
         this.matriculaAlumnos = matriculaAlumnos;
         this.costoPorEstudiante = costoPorEstudiante;
     }
-   
+
+    /*
+     * CARGA DE CURSO
+     */
+
+    public void cargaCurso() {
+        
+        this.nombreCurso = JOptionPane.showInputDialog("Ingrese el nombre del curso: ");
+
+        boolean error=false;
+        do{
+            error=false;
+            try {
+                this.duracion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la duración: "));
+                this.matriculaAlumnos = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la matrícula de alumnos: "));
+                this.costoPorEstudiante = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el costo por estudiante: "));
+            } catch (Exception e) {
+                error=true;
+                JOptionPane.showMessageDialog(null,"Debe ingresesar un número válido", "ERROR",0);
+            }
+        } while(error);
+
+    }   
+
+
+
+
 }
