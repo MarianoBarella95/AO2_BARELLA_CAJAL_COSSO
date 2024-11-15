@@ -60,7 +60,8 @@ public class CursoPresencial extends Curso {
      * MÉTODO CARGA
      */
 
-    public void cargaPresencial() {
+    public void cargaPresencial(int nCurso) {
+        JOptionPane.showMessageDialog(null, "Carga del curso: "+(nCurso), null, 1);
         super.cargaCurso();
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");

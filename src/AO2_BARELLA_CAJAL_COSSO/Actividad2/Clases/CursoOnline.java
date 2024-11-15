@@ -59,7 +59,7 @@ public class CursoOnline extends Curso {
      * MÉTODO CARGA
      */
 
-    public void cargaOnline() {
+    public void cargaOnline(int nCurso) {
         super.cargaCurso();
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");

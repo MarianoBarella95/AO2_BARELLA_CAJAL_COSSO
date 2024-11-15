@@ -50,7 +50,7 @@ public class CursoHibrido extends Curso {
         this.horario = horario; 
     }
 
-    public void cargaHibrido() {
+    public void cargaHibrido(int nCurso) {
         super.cargaCurso();
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");
