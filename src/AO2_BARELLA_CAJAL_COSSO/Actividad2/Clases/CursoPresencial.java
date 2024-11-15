@@ -76,4 +76,16 @@ public class CursoPresencial extends Curso {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de Colectivo válido","Advertencia", 2);
         }
     }
+
+    /*
+     * MÉTODO MOSTRAR CURSO PRESENCIAL
+     */
+
+    public void mostrarCursoPresencial() {
+        super.mostrarCurso();    
+        String mensaje = String.format("\nUbicación: %s\nPlataforma: %s\nHorario: %s", this.ubicacion, this.plataforma, this.horario);
+        
+        JOptionPane.showMessageDialog(null, mensaje, "Información del Curso", 1);
+
+    }
 }

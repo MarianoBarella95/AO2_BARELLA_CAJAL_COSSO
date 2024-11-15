@@ -91,6 +91,15 @@ public class Curso {
 
     }   
 
+    /*
+     * MÉTODO MOSTRAR CURSO
+     */
+
+    public void mostrarCurso() {
+        String mensaje = String.format("Nombre: %s\nDuración: %d\nMatrícula: %d\nCosto: %f", this.nombreCurso, this.duracion, this.matriculaAlumnos, this.costoPorEstudiante);
+    
+        JOptionPane.showMessageDialog(null, mensaje, "Información del Curso", 1);
+    }
 
 
 
