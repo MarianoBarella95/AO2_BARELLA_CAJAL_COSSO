@@ -47,7 +47,7 @@ public class CursoOnline extends Curso {
         this.horario = horario;
     }
 
-    public CursoOnline(String nombreCurso, int duracion, Double matriculaAlumno, Double costoPorEstudiante, String ubicacion, String plataforma, Double horario) {
+    public CursoOnline(String nombreCurso, int duracion, int matriculaAlumno, Double costoPorEstudiante, String ubicacion, String plataforma, Double horario) {
         super(nombreCurso, duracion, matriculaAlumno, costoPorEstudiante);
         this.ubicacion = ubicacion; 
         this.plataforma = plataforma;
@@ -75,4 +75,28 @@ public class CursoOnline extends Curso {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de Colectivo válido","Advertencia", 2);
         }
     }
+
+    /*
+     * MÉTODO MOSTRAR CURSO ONLINE
+     */
+
+     public void mostrarCursoOnline() {
+        super.mostrarCurso();    
+        String mensaje = String.format("\nUbicación: %s\nPlataforma: %s\nHorario: %s", this.ubicacion, this.plataforma, this.horario);
+        
+        JOptionPane.showMessageDialog(null, mensaje, "Información del Curso", 1);
+
+    }
+
+    /*
+     * MÉTODO CALCULAR COSTO ONLINE
+     */
+
+
+    public double calcularCostoFinal() {
+        // Aplicamos un 15% de descuento al costo del curso presencial
+        return this.getCostoPorEstudiante() * 0.85; // 15% de descuento
+    }
+
+
 }

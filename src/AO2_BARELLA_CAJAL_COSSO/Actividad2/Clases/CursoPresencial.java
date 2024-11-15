@@ -49,17 +49,23 @@ public class CursoPresencial extends Curso {
         this.horario = Horario.TURNO_MAÑANA;
     }
 
-    public CursoPresencial(String nombreCurso, int duracion, Double matriculaAlumno, Double costoPorEstudiante, String ubicacion, String plataforma, Horario horario) {
+    public CursoPresencial(String nombreCurso, int duracion, int matriculaAlumno, Double costoPorEstudiante, String ubicacion, String plataforma, Horario horario) {
         super(nombreCurso, duracion, matriculaAlumno, costoPorEstudiante);
         this.ubicacion = ubicacion; 
         this.plataforma = plataforma;
         this.horario = horario; 
     }
 
+    
+    @Override
+    public String toString() {
+        return super.toString() + "CursoPresencial [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
+    
+    }
     /*
      * MÉTODO CARGA
      */
-
+    
     public void cargaPresencial(int nCurso) {
         JOptionPane.showMessageDialog(null, "Carga del curso: "+(nCurso), null, 1);
         super.cargaCurso();
@@ -86,7 +92,7 @@ public class CursoPresencial extends Curso {
         super.mostrarCurso();    
         String mensaje = String.format("\nUbicación: %s\nPlataforma: %s\nHorario: %s", this.ubicacion, this.plataforma, this.horario);
         
-        JOptionPane.showMessageDialog(null, mensaje, "Información del Curso", 1);
+        JOptionPane.showMessageDialog(null, mensaje, "Información del Curso Presencial", 1);
 
     }
 }
