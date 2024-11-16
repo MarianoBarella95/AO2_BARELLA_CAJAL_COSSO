@@ -1,0 +1,47 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>500</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>Curso
+--
+#nombreCurso: String
+#duracion: integer
+#matriculaAlumnos: double
+#costoPorEstudiante: double
+#ipoCurso: TipoCurso
+--
++CursoHibrido()
++Curso(String, int, Double, Double)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>320</y><w>210</w><h>190</h></coordinates><panel_attributes>CursoPresencial
+--
+#ubicacion: String
+#plataforma: String
+#horario: TipoHorario
+--
++CursoPresencial()
++CursoPresencial(String, int, Double, Double, String, String, TipoHorario) 
++cargaCPresencial(): void
++muestraCPresencial(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>320</y><w>210</w><h>190</h></coordinates><panel_attributes>CursoHibrido
+--
+# ubicacion: String
+# plataforma: String
+# horario: TipoHorario
+--
++CursoHibrido()
++CursoHibrido(String, int, Double, Double, String, String, TipoHorario)
++cargaChibrido(): void
++muestraChibrido(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>320</y><w>210</w><h>190</h></coordinates><panel_attributes>CursoOnline
+--
+#ubicacion: String
+#plataforma: String
+#horario: TipoHorario 
+--
++CursoOnline()
++CursoOnline(String, int, Double, Double, String, String, TipoHorario)
++cargaConline(): void
++muestraConline(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>830</x><y>100</y><w>90</w><h>90</h></coordinates><panel_attributes>TipoCurso
+--
+PRESENCIAL
+ONLINE
+HIBRIDO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>620</y><w>120</w><h>90</h></coordinates><panel_attributes>TipoHorario
+--
+TURNO_MAÑANA
+TURNO_TARDE
+TURNO_NOCHE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>230</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>230</y><w>280</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;260;50;260;90</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>230</y><w>290</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>270;10;270;50;10;50;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>140</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>500</y><w>280</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;160;260;160;260;10</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>500</y><w>290</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>270;160;10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>500</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element></diagram>
