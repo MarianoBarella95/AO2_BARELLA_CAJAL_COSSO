@@ -16,16 +16,21 @@ public class AdivinarNumero {
     static long[] tiempos;
 
     public static void main(String[] args) {
-        // Solicitar cantidad de jugadores con validación
+        
+        /*
+         * SOLICITO LA CANTIDAD DE JUGADORES
+         */
+
         nJugadores = leerEntero("Ingrese la cantidad de jugadores", "Cantidad de Participantes");
 
-        // Inicializar vectores
         nombres = new String[nJugadores];
         intentos = new int[nJugadores];
         errores = new int[nJugadores];
         tiempos = new long[nJugadores];
 
-        // Ingresar nombres de los jugadores
+        /*
+         * INGRESO DE NOMBRES
+         */
         for (int i = 0; i < nJugadores; i++) {
             String nombre;
             do {
@@ -38,7 +43,9 @@ public class AdivinarNumero {
             } while (nombres[i] == null);
         }
 
-        // Juego principal
+        /*
+         * ACÁ VA EL JUEGO
+         */
         for (int i = 0; i < nJugadores; i++) {
             JOptionPane.showMessageDialog(null, "Turno Jugador " + nombres[i], "Turnero", 1);
             comienza = Instant.now();
@@ -68,7 +75,9 @@ public class AdivinarNumero {
             tiempos[i] = duracion.getSeconds();
         }
 
-        // Menú de estadísticas
+        /*
+         * ESTE ES EL MENÚ DE ESTADÍSTICAS
+         */
         int opcion = -1;
         do {
             String[] opciones = {
@@ -101,7 +110,9 @@ public class AdivinarNumero {
         } while (opcion != 6);
     }
 
-    // Método para leer un número entero con validación
+    /*
+     * VALIDACIÓN INT
+     */
     public static int leerEntero(String mensaje, String titulo) {
         int numero = 0;
         boolean valido = false;
@@ -121,7 +132,9 @@ public class AdivinarNumero {
         return numero;
     }
 
-    // Estadísticas
+    /*
+     * ESTADÍSTICAS
+     */
     public static String menosIntentos() {
         int menorIntentos = intentos[0];
         int pos = 0;

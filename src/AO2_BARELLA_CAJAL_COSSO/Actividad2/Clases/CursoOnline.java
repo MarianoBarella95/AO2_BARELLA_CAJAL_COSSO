@@ -61,6 +61,10 @@ public class CursoOnline extends Curso {
 
     public void cargaOnline(int nCurso) {
         super.cargaCurso();
+
+        Double costoBase = Curso.getCostoBasePresencial();
+        this.setCostoPorEstudiante(costoBase*0.85);
+
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");
         
@@ -81,9 +85,10 @@ public class CursoOnline extends Curso {
      */
 
      @Override
-    public String toString() {
-        return "CursoOnline [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
-    }
+     public String toString() {
+         return super.toString() + " [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
+     }
+     
 
     public void mostrarCursoOnline() {
         super.mostrarCurso();    
@@ -99,8 +104,7 @@ public class CursoOnline extends Curso {
 
 
     public double calcularCostoFinal() {
-        // Aplicamos un 15% de descuento al costo del curso presencial
-        return this.getCostoPorEstudiante() * 0.85; // 15% de descuento
+        return Curso.costoBasePresencial * 0.85; 
     }
 
 

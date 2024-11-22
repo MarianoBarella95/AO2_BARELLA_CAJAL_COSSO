@@ -1,7 +1,5 @@
 package AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases;
 
-
-
 import javax.swing.JOptionPane;
 
 import AO2_BARELLA_CAJAL_COSSO.Actividad2.Tipo_Cursos;
@@ -14,6 +12,8 @@ public class Curso {
     protected Double costoPorEstudiante;
     protected Tipo_Cursos tipoCurso;
     protected Object[] cursosCreados;
+    protected static double costoBasePresencial = 1000.0;
+
     
     /*
      * GETTERS & SETTERS
@@ -21,6 +21,10 @@ public class Curso {
   
     public String getNombreCurso() {
         return nombreCurso;
+    }
+
+    public static double getCostoBasePresencial() {
+        return costoBasePresencial;
     }
 
     public void setNombreCurso(String nombreCurso) {
@@ -49,10 +53,6 @@ public class Curso {
 
     public void setCostoPorEstudiante(Double costoPorEstudiante) {
         this.costoPorEstudiante = costoPorEstudiante;
-    }
-
-    public int compareTo(Curso otroCurso) {
-        return Integer.compare(this.matriculaAlumnos, otroCurso.matriculaAlumnos); // Orden ascendente
     }
     
     
@@ -134,7 +134,6 @@ public class Curso {
             int seleccion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de curso:", "Registrar Curso",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
     
-            // Curso nuevoCurso;
     
             switch (seleccion) {
                 case 0:
@@ -142,6 +141,7 @@ public class Curso {
                     nuevoCursoPresencial.cargaPresencial(i);
                     listaCursos[cantidadCursos] = nuevoCursoPresencial;
                     cantidadCursos++;
+                    Curso.setCostoBasePresencial(nuevoCursoPresencial.getCostoPorEstudiante());
                     break;
                     case 1:
                     CursoOnline nuevoCursoOnline = new CursoOnline();
@@ -160,7 +160,7 @@ public class Curso {
                     continue;
             }
     
-            // nuevoCurso.cargaCurso(); 
+
         }
     
         return cantidadCursos;
@@ -175,14 +175,29 @@ public class Curso {
             JOptionPane.showMessageDialog(null, "No hay cursos registrados.");
             return;
         }
-    
-        StringBuilder listado = new StringBuilder("Lista de Cursos:\n");
-    
+
+        
         for (int i = 0; i < cantidadCursos; i++) {
-            listado.append((i + 1)).append(". ").append(listaCursos[i].toString()).append("\n");
+            Curso curso = listaCursos[i];
+            if (curso instanceof CursoPresencial) {
+                ((CursoPresencial)curso).mostrarCursoPresencial();
+            } else if (curso instanceof CursoOnline) {
+                ((CursoOnline)curso).mostrarCursoOnline();
+            } else if (curso instanceof CursoHibrido) {
+                ((CursoHibrido)curso).mostrarCursoHibrido();
+            }
+            
+            if (cantidadCursos > 1) {
+                int opcion = JOptionPane.showConfirmDialog(null, "Ver siguiente curso", "Listado de Cursos",
+                                    JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                
+                if (opcion == JOptionPane.NO_OPTION) {
+                           
+                            }
+            } else if (cantidadCursos == listaCursos.length-1) {
+                JOptionPane.showMessageDialog(null, "No hay más cursos por mostrar.", null, JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-    
-        JOptionPane.showMessageDialog(null, listado.toString(), "Cursos Registrados", JOptionPane.INFORMATION_MESSAGE);
     }
      
 
@@ -202,6 +217,16 @@ public class Curso {
      public double calcularTotalRecaudado() {
         return this.matriculaAlumnos * this.costoPorEstudiante;
     }
+
+    /*
+     * MÉTODO PARA SETEAR EL COSTO DEL CURSO PRESENCIAL
+     * (PARA CALCULAR EL COSTO DEL ONLINE)
+     */
+
+    public static void setCostoBasePresencial(double costo) {
+        costoBasePresencial = costo;
+    }
+    
     
 
 }

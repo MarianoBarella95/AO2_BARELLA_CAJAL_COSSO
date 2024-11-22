@@ -72,7 +72,7 @@ public class CursoPresencial extends Curso {
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");
         
-        Horario[] tipos=Horario.values();// convierte las constantes del enum en un arreglo de strings
+        Horario[] tipos=Horario.values();
 
         Horario seleccionTipo=(Horario) JOptionPane.showInputDialog(null, "Seleccione el Horario",
         "Turnos Horarios",JOptionPane.QUESTION_MESSAGE,null, tipos, tipos[0]);

@@ -72,9 +72,11 @@ public class CursoHibrido extends Curso {
      */
 
      @Override
-    public String toString() {
-        return "CursoHibrido [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
-    }
+     public String toString() {
+         return super.toString() + " [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
+     }
+     
+
     public void mostrarCursoHibrido() {
         super.mostrarCurso();    
         String mensaje = String.format("\nUbicación: %s\nPlataforma: %s\nHorario: %s", this.ubicacion, this.plataforma, this.horario);
