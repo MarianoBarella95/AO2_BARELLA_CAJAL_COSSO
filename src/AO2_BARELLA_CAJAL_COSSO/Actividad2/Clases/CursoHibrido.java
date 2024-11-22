@@ -40,7 +40,7 @@ public class CursoHibrido extends Curso {
         super();
         this.ubicacion = "";
         this.plataforma = "";
-        this.horario = horario.TURNO_MAÑANA;
+        this.horario = Horario.TURNO_MAÑANA;
     }
 
     public CursoHibrido(String nombreCurso, int duracion, int matriculaAlumno, Double costoPorEstudiante, String ubicacion, String plataforma, Horario horario) {
@@ -55,7 +55,7 @@ public class CursoHibrido extends Curso {
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");
         
-        Horario[] tipos=Horario.values();// convierte las constantes del enum en un arreglo de strings
+        Horario[] tipos=Horario.values();
 
         Horario seleccionTipo=(Horario) JOptionPane.showInputDialog(null, "Seleccione el Horario",
         "Turnos Horarios",JOptionPane.QUESTION_MESSAGE,null, tipos, tipos[0]);
@@ -71,7 +71,11 @@ public class CursoHibrido extends Curso {
      * MÉTODO MOSTRAR CURSO HÍBRIDO
      */
 
-     public void mostrarCursoHibrido() {
+     @Override
+    public String toString() {
+        return "CursoHibrido [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
+    }
+    public void mostrarCursoHibrido() {
         super.mostrarCurso();    
         String mensaje = String.format("\nUbicación: %s\nPlataforma: %s\nHorario: %s", this.ubicacion, this.plataforma, this.horario);
         

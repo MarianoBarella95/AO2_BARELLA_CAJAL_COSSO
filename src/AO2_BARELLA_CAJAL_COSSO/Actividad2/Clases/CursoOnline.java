@@ -44,7 +44,7 @@ public class CursoOnline extends Curso {
         super();
         this.ubicacion = "";
         this.plataforma = "";
-        this.horario = horario;
+        this.horario = Horario.TURNO_MAÑANA;
     }
 
     public CursoOnline(String nombreCurso, int duracion, int matriculaAlumno, Double costoPorEstudiante, String ubicacion, String plataforma, Double horario) {
@@ -64,7 +64,7 @@ public class CursoOnline extends Curso {
         this.ubicacion = JOptionPane.showInputDialog("Ingrese la ubicación: ");
         this.plataforma = JOptionPane.showInputDialog("Ingrese la plataforma: ");
         
-        Horario[] tipos=Horario.values();// convierte las constantes del enum en un arreglo de strings
+        Horario[] tipos=Horario.values();
 
         Horario seleccionTipo=(Horario) JOptionPane.showInputDialog(null, "Seleccione el Horario",
         "Turnos Horarios",JOptionPane.QUESTION_MESSAGE,null, tipos, tipos[0]);
@@ -80,7 +80,12 @@ public class CursoOnline extends Curso {
      * MÉTODO MOSTRAR CURSO ONLINE
      */
 
-     public void mostrarCursoOnline() {
+     @Override
+    public String toString() {
+        return "CursoOnline [ubicacion=" + ubicacion + ", plataforma=" + plataforma + ", horario=" + horario + "]";
+    }
+
+    public void mostrarCursoOnline() {
         super.mostrarCurso();    
         String mensaje = String.format("\nUbicación: %s\nPlataforma: %s\nHorario: %s", this.ubicacion, this.plataforma, this.horario);
         

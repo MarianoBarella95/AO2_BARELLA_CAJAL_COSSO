@@ -1,14 +1,13 @@
 package AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases;
 
-import java.util.Arrays;
+
 
 import javax.swing.JOptionPane;
 
 import AO2_BARELLA_CAJAL_COSSO.Actividad2.Tipo_Cursos;
-import AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases.Ingreso;
-import AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases.Salida;
 
-public class Curso implements Comparable<Curso> {
+
+public class Curso {
     protected String nombreCurso;
     protected int duracion;
     protected int matriculaAlumnos;
@@ -114,11 +113,86 @@ public class Curso implements Comparable<Curso> {
     }
 
     /*
+     * MÉTODO REGISTRAR CURSO
+     */
+
+     public static int registrarCursos(Curso[] listaCursos, int maxCursos, int cantidadCursos) {
+        if (cantidadCursos >= maxCursos) {
+            JOptionPane.showMessageDialog(null, "Se alcanzó el límite máximo de cursos.");
+            return cantidadCursos;
+        }
+    
+        int cursosACrear = Integer.parseInt(JOptionPane.showInputDialog("¿Cuántos cursos desea crear?"));
+    
+        for (int i = 0; i < cursosACrear; i++) {
+            if (cantidadCursos >= maxCursos) {
+                JOptionPane.showMessageDialog(null, "No hay más espacio para cursos.");
+                break;
+            }
+    
+            String[] opciones = {"Presencial", "Online", "Híbrido"};
+            int seleccion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de curso:", "Registrar Curso",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
+    
+            // Curso nuevoCurso;
+    
+            switch (seleccion) {
+                case 0:
+                    CursoPresencial nuevoCursoPresencial = new CursoPresencial();
+                    nuevoCursoPresencial.cargaPresencial(i);
+                    listaCursos[cantidadCursos] = nuevoCursoPresencial;
+                    cantidadCursos++;
+                    break;
+                    case 1:
+                    CursoOnline nuevoCursoOnline = new CursoOnline();
+                    nuevoCursoOnline.cargaOnline(i);
+                    listaCursos[cantidadCursos] = nuevoCursoOnline;
+                    cantidadCursos++;
+                    break;
+                    case 2:
+                    CursoHibrido nuevoCursoHibrido = new CursoHibrido();
+                    nuevoCursoHibrido.cargaHibrido(i);
+                    listaCursos[cantidadCursos] = nuevoCursoHibrido;
+                    cantidadCursos++;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Selección no válida.");
+                    continue;
+            }
+    
+            // nuevoCurso.cargaCurso(); 
+        }
+    
+        return cantidadCursos;
+    }
+
+    /*
+     * LISTAR CURSOS
+     */
+    
+     public static void listarCursos(Curso[] listaCursos, int cantidadCursos) {
+        if (cantidadCursos == 0) {
+            JOptionPane.showMessageDialog(null, "No hay cursos registrados.");
+            return;
+        }
+    
+        StringBuilder listado = new StringBuilder("Lista de Cursos:\n");
+    
+        for (int i = 0; i < cantidadCursos; i++) {
+            listado.append((i + 1)).append(". ").append(listaCursos[i].toString()).append("\n");
+        }
+    
+        JOptionPane.showMessageDialog(null, listado.toString(), "Cursos Registrados", JOptionPane.INFORMATION_MESSAGE);
+    }
+     
+
+
+    /*
      * MÉTODO CALCULAR COSTO CURSO
      */
 
     public double calcularCostoFinal() {
-        return this.costoPorEstudiante; // El costo básico en la clase base es simplemente el costo por estudiante
+        return this.costoPorEstudiante;
     }
 
     /*

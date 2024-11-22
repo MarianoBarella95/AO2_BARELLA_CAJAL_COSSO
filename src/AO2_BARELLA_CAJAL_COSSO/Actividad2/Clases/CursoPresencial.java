@@ -2,7 +2,7 @@ package AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases;
 
 import javax.swing.JOptionPane;
 
-import AO2_BARELLA_CAJAL_COSSO.Actividad2.Clases.*;
+
 import AO2_BARELLA_CAJAL_COSSO.Actividad2.*;
 
 public class CursoPresencial extends Curso {
